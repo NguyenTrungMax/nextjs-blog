@@ -1,66 +1,86 @@
+import React, { Component, Fragment } from 'react'
 import Head from 'next/head'
-import styles from './layout.module.css'
+import styles from './style/layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = 'Nguyễn Văn Trung'
-export const siteTitle = 'Next.js Sample Website'
+const IconSvgPath = '/svg/svg-overview.svg'
+class Layout extends Component {
+    constructor() {
+        super()
+        this.state = {
+            menus: [
+                {
+                    name: 'Tổng quan',
+                    code: 'OVERVIEW',
+                    link: 'tong-quan'
+                },
+                {
+                    name: 'Quản lý công việc',
+                    code: 'WORK_FLOW_MANAGEMENT',
+                    link: 'quan-ly-cong-viec'
+                },
+                {
+                    name: 'Báo cáo tiến độ',
+                    code: 'PROGRESS_REPORT',
+                    link: 'bao-cao-tien-do'
+                },
+                {
+                    name: 'Thống kê',
+                    code: 'STATISTICAL',
+                    link: 'thong-ke'
+                },
+                {
+                    name: 'Quản trị hệ thống',
+                    code: 'SYSTEM_MANAGEMENT',
+                    link: 'quan-tri-he-thong'
+                }
+            ]
+        }
+    }
 
-export default function Layout({ children, home }) {
-    return (
-        <div className={styles.container}>
-            <Head>
-                <link rel="icon" href="/favicon.ico" />
-                <meta
-                    name="description"
-                    content="Learn how to build a personal website using Next.js"
-                />
-                <meta
-                    property="og:image"
-                    content={`https://og-image.now.sh/${encodeURI(
-                        siteTitle
-                    )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-                />
-                <meta name="og:title" content={siteTitle} />
-                <meta name="twitter:card" content="summary_large_image" />
-            </Head>
-            <header className={styles.header}>
-                {home ? (
-                    <>
-                        <img
-                            src="/images/profile.jpg"
-                            className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-                            alt={name}
-                        />
-                        <h1 className={utilStyles.heading2Xl}>{name}</h1>
-                    </>
-                ) : (
-                        <>
-                            <Link href="/">
-                                <a>
-                                    <img
-                                        src="/images/profile.jpg"
-                                        className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                                        alt={name}
-                                    />
-                                </a>
-                            </Link>
-                            <h2 className={utilStyles.headingLg}>
-                                <Link href="/">
-                                    <a className={utilStyles.colorInherit}>{name}</a>
-                                </Link>
-                            </h2>
-                        </>
-                    )}
-            </header>
-            <main>{children}</main>
-            {!home && (
-                <div className={styles.backToHome}>
-                    <Link href="/">
-                        <a>← Back to home</a>
-                    </Link>
+    componentDidMount() {
+
+    }
+
+    generateMenu = () => {
+        const { menus } = this.state;
+        const { code, title } = this.props;
+        return (
+            <Fragment>
+                <Head>
+                    <title>{title}</title>
+                </Head>
+                <div className={styles.container}>
+                    <header className={styles.header}>
+                        <div className="logo">logo</div>
+                        <img src="/images/profile.jpg" alt="image-user" className={styles.iconUser} />
+                    </header>
+                    <main className={styles.main}>
+                        <div className={styles.leftSidebar}>
+                            <ul className={styles.ul}>
+                                {menus.map((item, index) => {
+                                    return <Link key={index} href={item.link}>
+                                        <li className={`${styles.li} ${item.code === code ? styles.active: ''}`}>
+                                            <img src={IconSvgPath} alt='icon menu sidebar' className={styles.menuIcon} />
+                                            <span className={styles.menuText}>{item.name}</span>
+                                        </li>
+                                    </Link>
+                                })}
+                            </ul>
+                        </div>
+                        <div className={styles.mainContent}></div>
+                    </main>
                 </div>
-            )}
-        </div>
-    )
+            </Fragment>
+
+        )
+
+    }
+
+    render() {
+        return this.generateMenu();
+    }
 }
+
+export default Layout;
