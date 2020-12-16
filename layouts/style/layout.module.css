@@ -1,0 +1,74 @@
+.container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid rgba(17, 17, 17, 0.2);
+}
+
+/* chú thích luôn việc sử dụng em và rem 
+em: đối chiếu trực tiếp so với phần tử cha hoặc chính nó dựa vào font-site để lấy kích cỡ tương ứng
+rem: tương tự nhưng khác cái là so sánh vs thẻ html
+hết */
+.iconUser {
+    width: 3em;
+    height: inherit;
+    margin-right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+/* side bar */
+.leftSidebar {
+    min-width: 200px;
+    border-right: 1px solid #a3737354
+}
+
+.ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.li {
+    cursor: pointer;
+    display: flex;
+    margin-top: 1em;
+    padding-left: 0.2em;
+}
+
+.li.active,
+.li:hover,
+.li:active {
+    background-color: khaki;
+}
+
+.menuIcon {
+    width: 20px;
+    height: inherit;
+}
+
+.menuText {
+    flex: 1;
+    padding-left: 0.2em;
+}
+
+/* main content */
+.mainContent {
+    flex: 1;
+}

@@ -1,0 +1,7 @@
+#StiViewer .stiJsViewerReportPanel {
+    overflow: auto !important;
+}
+
+.stiJsViewerReportPanel {
+    height: 100vh !important;
+}

@@ -1,5 +1,4 @@
-import Layout from '../../components/Layout'
-import Head from 'next/head'
+import Layout from '../../layouts/Layout'
 
 // Thứ tự thực hiện các hàm bất đồng bộ
 // 1 là getStaticPaths - hàm bất đồng bộ lấy ra danh sách các params động
