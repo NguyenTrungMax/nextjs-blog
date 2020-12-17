@@ -12,7 +12,6 @@ class Manager extends React.Component {
     componentDidMount() {
         appendScript('/scripts/stimulsoft.reports.js');
         appendScript('/scripts/stimulsoft.viewer.js');
-        appendScript('/scripts/stimulsoft.viewer.js');
     }
 
     render() {
